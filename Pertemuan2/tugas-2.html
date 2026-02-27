@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Tugas Pertemuan 2</title>
+    <style>
+        .box {
+            width: 500px;
+            padding: 50px;
+            margin: 10 px;
+            border: 2px solid rgb(59, 51, 51);
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <form action="db.php" method="post" enctype="multipart/form-data">
+            <br>
+            Nama : <input type="text" name="username">
+            </br>
+            Email : <input type="text" name="email">
+            <br>
+            Jenis Kelamin : <label><input type="radio" name="Jenis Kelamin" value="Laki-Laki">Laki - Laki</label>
+            <label><input type="radio" name="Jenis Kelamin" value="Perempuan">Perempuan</label>
+            </br>
+            Hobi : <label><input type="checkbox" name="hobi" value="Musik">Musik</label>
+            <label><input type="checkbox" name="hobi" value="olahraga">Olahraga</label>
+            <br>
+            Pilih Kota : <select name="pilihan">
+                <option value="1">Jakarta</option>
+                <option value="2">Bandung</option>
+                <option value="3">Surabaya</option>
+            </select>
+            </br>
+            Upload Foto :<input type="file" id="file" name="file">
+            <br>
+            <!-- <input type="text" name="username" required minlength="5" maxlength="20">
+            <input type="email" name="email" required>
+            <input type="number" name="age" min="10" max="20"> -->
+            <button type="submit">Daftar</button>
+        </br>
+        </form>
+    </div>
+</body>
+
+</html>

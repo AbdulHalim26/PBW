@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Praktikum 3.2</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5; /* Warna latar abu-abu terang */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px; /* Bikin ujung kotak melengkung */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Efek bayangan */
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .grup-input {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        /* Saat input diklik (fokus), batasnya jadi biru */
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db; /* Warna biru */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Biru lebih gelap saat disentuh mouse */
+        }
+
+        /* Styling dasar untuk kotak hasil */
+        #tempatHasil {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: none; /* Awalnya disembunyikan sampai tombol diklik */
+        }
+
+        /* Class ini akan dipanggil oleh JavaScript jika berhasil */
+        .sukses {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        /* Class ini akan dipanggil oleh JavaScript jika error */
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cek Nilai Mahasiswa</h1>
+        
+        <div class="grup-input">
+            <label for="nim">Nomor Induk Mahasiswa (NIM):</label>
+            <input type="text" id="nim" placeholder="Masukkan NIM kamu">
+        </div>
+
+        <div class="grup-input">
+            <label for="nilai">Nilai Mata Kuliah (0-100):</label>
+            <input type="number" id="nilai" placeholder="Contoh: 85">
+        </div>
+
+        <button onclick="hitungMutu()">Cek Huruf Mutu</button>
+
+        <div id="tempatHasil"></div>
+    </div>
+
+    <script>
+        function hitungMutu() {
+            let nimUser = document.getElementById("nim").value;
+            let nilaiUser = document.getElementById("nilai").value;
+            let angka = parseInt(nilaiUser);
+            
+            let kotakHasil = document.getElementById("tempatHasil");
+
+            // Validasi: Cek apakah kotak isian kosong
+            if (nimUser === "" || isNaN(angka)) {
+                kotakHasil.innerHTML = "<strong>Peringatan:</strong> Harap isi NIM dan Nilai terlebih dahulu!";
+                kotakHasil.className = "error";     // Memanggil gaya CSS merah
+                kotakHasil.style.display = "block"; // Menampilkan kotak
+                return; // Menghentikan kode agar tidak lanjut ke bawah
+            }
+
+            // Logika IF-ELSE sesuai soal
+            if (angka < 0 || angka > 100) {
+                kotakHasil.innerHTML = "<strong>Error:</strong> Nilai tidak valid! Masukkan rentang 0 - 100.";
+                kotakHasil.className = "error";     // Memanggil gaya CSS merah
+            } 
+            else {
+                // Mencari huruf mutu
+                let hurufMutu = "";
+                if (angka >= 80) { hurufMutu = "A"; }
+                else if (angka >= 70) { hurufMutu = "B"; }
+                else if (angka >= 60) { hurufMutu = "C"; }
+                else if (angka >= 50) { hurufMutu = "D"; }
+                else { hurufMutu = "E"; }
+
+                // Menampilkan hasil jika valid
+                // Tanda backtick (`) digunakan agar kita bisa memasukkan variabel ke dalam teks dengan gampang pakai ${}
+                kotakHasil.innerHTML = `NIM: <strong>${nimUser}</strong> <br> Mendapatkan Huruf Mutu: <strong style="font-size: 24px;">${hurufMutu}</strong>`;
+                kotakHasil.className = "sukses";    // Memanggil gaya CSS hijau
+            }
+
+            // Munculkan kotaknya setelah diisi teks
+            kotakHasil.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

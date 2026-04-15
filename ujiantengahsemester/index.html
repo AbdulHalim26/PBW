@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> Sistem Koperasi Mahasiswa </title>
+    <link rel="stylesheet" href="uts.css">
+</head>
+<body>
+    <h2> Form Sistem Koperasi Mahasiswa </h2><br>
+
+    <form method="POST" action="proses.php">
+        <label>Nama Mahasiswa : </label>
+        <input type="text" name="nama_mhs" required 
+        minlength="5" maxlength="20"><br><br>
+
+        <label> Nim : </label>
+        <input type="number" name="nim_mhs" required 
+        minlength="5" maxlength="10"><br><br>
+
+        <label> Email : </label>
+        <input type="email" name="email_mhs"><br><br>
+
+        <label> Jenis Layanan : </label>
+        <select name="jenis_layanan">
+            <option value="Reguler">Reguler</option>
+            <option value="Prioritas">Prioritas</option>
+        </select><br><br>
+
+        <label> Pilihan Barang : </label> 
+        <input type="checkbox" name="barang[]" value="Buku Tulis"> Buku Tulis
+        <input type="checkbox" name="barang[]" value="Pensil"> Pensil
+        <input type="checkbox" name="barang[]" value="Penghapus"> Penghapus
+        <input type="checkbox" name="barang[]" value="Pulpen"> Pulpen <br><br>
+
+        <button type="submit" name="submit"> Cek Semua </button>
+    </form>
+</body>
+</html>

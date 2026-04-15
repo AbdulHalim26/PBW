@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title> Tugass Predikat Nilai </title>
+    <title> Tugas Predikat Nilai </title>
 </head>
 <body>
     <h2> Form cek Predikat Nilai </h2>
 
-    <form method="POST" action="">
+    <form method="GET" action="tugas5-1.php">
         <label>Nama Mahasiswa : </label>
         <input type="text" name="nama_mhs"><br><br>
 

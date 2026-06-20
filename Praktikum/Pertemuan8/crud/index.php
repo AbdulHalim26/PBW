@@ -1,8 +1,7 @@
 <?php
 session_start();
-// Cek sesi HARUS di paling atas sebelum ada HTML!
 if (!isset($_SESSION['login_Un5ik4'])) {
-    header("Location: login.php?message=" . urlencode("Mengakses fitur ini harus login terlebih dahulu."));
+    header("Location: login.php?message=" . urlencode("Mengakses fitur harus login dulu bro."));
     exit;
 }
 
@@ -20,7 +19,15 @@ include 'koneksi.php';
 
 <body>
     <div class="container mt-5">
-        <h2>Daftar Buku Perpustakaan</h2>
+        <!-- HEADER DENGAN LOGOUT BUTTON -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Daftar Buku Perpustakaan</h2>
+            <div>
+                <span class="me-3">👤 <?= htmlspecialchars($_SESSION['nama']) ?></span>
+                <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </div>
+
         <a href="tambah.php" class="btn btn-primary mb-3">Tambah Buku baru</a>
         <table class="table table-bordered table-hover table-striped">
             <thead>
